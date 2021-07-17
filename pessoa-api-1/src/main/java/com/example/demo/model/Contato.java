@@ -4,9 +4,15 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 
 @Entity
 public class Contato {
@@ -15,15 +21,22 @@ public class Contato {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id; 
 	
+	@NotBlank(message = "Campo nome é obrigatório!")
 	@Column(nullable = false)
 	private String nome;
 	
+	@NotBlank(message = "Campo telefone é obrigatório!")
 	@Column(nullable = false)
 	private String telefone;
 	
+	@Email(message = "Campo email deve receber um email válido!")
 	@Column(nullable = false)
 	private String email;
 
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Pessoa.class)
+	@JoinColumn(name = "pessoa_id", insertable = false, updatable = false)
+	private Pessoa pessoa;
+	
 	public Long getId() {
 		return id;
 	}
@@ -56,6 +69,14 @@ public class Contato {
 		this.email = email;
 	}
 
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -72,6 +93,6 @@ public class Contato {
 		Contato other = (Contato) obj;
 		return Objects.equals(id, other.id);
 	}
-	
+
 	
 }
