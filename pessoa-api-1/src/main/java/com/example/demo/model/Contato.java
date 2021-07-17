@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -33,6 +34,7 @@ public class Contato {
 	@Column(nullable = false)
 	private String email;
 
+	
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Pessoa.class)
 	@JoinColumn(name = "pessoa_id", insertable = false, updatable = false)
 	private Pessoa pessoa;
