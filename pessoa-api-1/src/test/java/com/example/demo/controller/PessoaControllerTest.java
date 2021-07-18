@@ -54,7 +54,7 @@ public class PessoaControllerTest {
 		
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome("Eduardo");
-		pessoa.setCpf("109.812.289-50");
+		pessoa.setCpf("828.966.580-68");
 		//Date date = new Date();
 		Date date = new Date();
 		pessoa.setDataNascimento(date);
@@ -87,7 +87,7 @@ public class PessoaControllerTest {
 		//Date date = new Date();
 		Date date = new Date();
 		pessoa.setDataNascimento(date);
-		pessoa.setContatos(contatos);
+		//pessoa.setContatos(contatos);
 		
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
 		pessoas.add(pessoa);
